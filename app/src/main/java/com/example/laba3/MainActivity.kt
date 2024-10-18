@@ -30,13 +30,22 @@ class MainActivity : AppCompatActivity() {
         {
             return
         }
+
         val x = findViewById<EditText>(R.id.editTextText).text.toString().toCharArray()
         val i = findViewById<EditText>(R.id.editTextNumberSigned).text.toString().toInt()
         val c = findViewById<EditText>(R.id.editTextText2).text.toString().toCharArray()
+        if (i < 0 || i > x.size || c.isEmpty()) {
+            Toast.makeText(this, "Некорректный ввод", Toast.LENGTH_SHORT).show()
+            return
+        }
+
         for(n in 0..i-1)
         {
             x[n] = c[0]
         }
-        Toast.makeText(this, String(x), Toast.LENGTH_SHORT).show()
+        val editText = findViewById<EditText>(R.id.editTextText)
+        editText.setText(String(x))
+
+    //Toast.makeText(this, String(x), Toast.LENGTH_SHORT).show()
     }
 }
